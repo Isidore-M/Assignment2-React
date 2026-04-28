@@ -1,4 +1,4 @@
-# Alex Thorne // Digital Architecture Portfolio 🏛️
+# Alex Thorne // Digital Architecture Portfolio
 
 A high-end, cinematic portfolio experience built for the modern web. This project explores the intersection of **Architectural Design** and **Front-End Engineering**.
 
