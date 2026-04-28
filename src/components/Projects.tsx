@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const projectData = [
+// Defined Project Interface for clean code
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  tech: string[];
+}
+
+// Added onOpenProject to the Props
+interface ProjectsProps {
+  onOpenProject: (project: Project) => void;
+}
+
+const projectData: Project[] = [
   {
     id: "01",
     title: "The Glass House",
@@ -28,7 +43,7 @@ const projectData = [
   }
 ];
 
-const Projects: React.FC = () => {
+const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
   const [activeProject, setActiveProject] = useState(0);
 
   return (
@@ -56,7 +71,7 @@ const Projects: React.FC = () => {
               <button
                 key={project.id}
                 onClick={() => setActiveProject(index)}
-                className={`group flex items-center justify-between rounded-full border px-8 py-5 transition-all duration-500 ${
+                className={`group flex items-center justify-between rounded-full border px-8 py-5 transition-all duration-500 outline-none ${
                   activeProject === index 
                   ? "bg-black text-white" 
                   : "bg-transparent text-gray-400 border-gray-100 hover:border-black hover:text-black"
@@ -69,7 +84,6 @@ const Projects: React.FC = () => {
                   </span>
                 </div>
                 
-                {/* --- UPDATED INDICATOR DOT --- */}
                 <div className="relative flex items-center justify-center">
                   {activeProject === index && (
                     <span className="absolute h-4 w-4 animate-ping rounded-full bg-[#B04627]/30" />
@@ -93,7 +107,6 @@ const Projects: React.FC = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Category also updated to Terracotta hex */}
               <p className="font-mono text-[10px] text-[#B04627] uppercase tracking-widest mb-2 font-bold">
                 {projectData[activeProject].category}
               </p>
@@ -105,61 +118,61 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-   {/* 2. RIGHT SIDE: Full-Bleed Image Gallery */}
-<div className="relative w-1/2 bg-[#f0f0f0] overflow-hidden">
-  <AnimatePresence mode="wait" initial={false}>
-    <motion.div
-      key={activeProject}
-      className="absolute inset-0"
-      initial={{ x: "100%" }} // Starts off-screen to the right
-      animate={{ x: 0 }}      // Slides in
-      exit={{ x: "-100%" }}   // Slides out to the left
-      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }} // "Quartic" ease for luxury feel
-    >
-      {/* Dark tint overlay that fades out */}
-      <motion.div 
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="absolute inset-0 z-10 bg-black/20 pointer-events-none"
-      />
+      {/* 2. RIGHT SIDE: Cinematic Image Reveal */}
+      <div className="relative w-1/2 bg-[#f0f0f0] overflow-hidden">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={activeProject}
+            className="absolute inset-0"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          >
+            <motion.div 
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="absolute inset-0 z-10 bg-black/20 pointer-events-none"
+            />
+            <motion.img
+              src={projectData[activeProject].image}
+              alt={projectData[activeProject].title}
+              initial={{ scale: 1.2 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-      <motion.img
-        src={projectData[activeProject].image}
-        alt={projectData[activeProject].title}
-        // Subtle scale-up animation while the slide happens
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="h-full w-full object-cover"
-      />
-    </motion.div>
-  </AnimatePresence>
+        {/* Controls Overlay */}
+        <div className="absolute bottom-12 right-12 z-20 flex gap-4">
+          <button 
+            onClick={() => onOpenProject(projectData[activeProject])}
+            className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-white/10 px-8 py-4 text-white backdrop-blur-xl border border-white/20 transition-all hover:bg-white hover:text-black outline-none"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em]">View Case Study —</span>
+          </button>
+          
+          <div className="flex gap-2">
+             <button 
+               onClick={() => setActiveProject(prev => (prev > 0 ? prev - 1 : projectData.length - 1))}
+               className="h-12 w-12 rounded-full border border-white/20 bg-white/5 text-white flex items-center justify-center backdrop-blur-sm hover:bg-white hover:text-black transition-all outline-none"
+             >
+                ←
+             </button>
+             <button 
+               onClick={() => setActiveProject(prev => (prev < projectData.length - 1 ? prev + 1 : 0))}
+               className="h-12 w-12 rounded-full border border-white/20 bg-white/5 text-white flex items-center justify-center backdrop-blur-sm hover:bg-white hover:text-black transition-all outline-none"
+             >
+                →
+             </button>
+          </div>
+        </div>
+      </div>
 
-  {/* Floating Controls (Over the image) */}
-  <div className="absolute bottom-12 right-12 z-20 flex gap-4">
-    <button className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-white/10 px-8 py-4 text-white backdrop-blur-xl border border-white/20 transition-all hover:bg-white hover:text-black">
-      <span className="font-mono text-[10px] uppercase tracking-[0.3em]">View Case Study —</span>
-    </button>
-    
-    {/* Navigation Arrows */}
-    <div className="flex gap-2">
-       <button 
-         onClick={() => setActiveProject(prev => (prev > 0 ? prev - 1 : projectData.length - 1))}
-         className="h-12 w-12 rounded-full border border-white/20 bg-white/5 text-white flex items-center justify-center backdrop-blur-sm hover:bg-white hover:text-black transition-all"
-       >
-          <span className="mb-0.5">←</span>
-       </button>
-       <button 
-         onClick={() => setActiveProject(prev => (prev < projectData.length - 1 ? prev + 1 : 0))}
-         className="h-12 w-12 rounded-full border border-white/20 bg-white/5 text-white flex items-center justify-center backdrop-blur-sm hover:bg-white hover:text-black transition-all"
-       >
-          <span className="mb-0.5">→</span>
-       </button>
-    </div>
-  </div>
-</div>
-
+      {/* MODAL REMOVED FROM HERE TO PREVENT TRANSFORM BUG */}
     </section>
   );
 };
