@@ -9,7 +9,7 @@ A high-end, cinematic portfolio experience built for the modern web. This projec
 
 ---
 
-## 🏗️ The Architecture
+##  The Architecture
 
 This portfolio deviates from standard vertical scrolling to provide a **Horizontal Scroll Narrative**. By leveraging `sticky` positioning and CSS transforms, the site glides through four distinct "zones":
 
@@ -18,14 +18,14 @@ This portfolio deviates from standard vertical scrolling to provide a **Horizont
 3.  **03 / Selected Works:** An interactive project gallery with full-bleed mask reveals and case study overlays.
 4.  **04 / Connection:** A streamlined contact portal for new collaborations.
 
-## 🚀 Key Features
+##  Key Features
 
 - **Custom Horizontal Wrapper:** Engineered a bespoke scroll-jack system using React hooks to translate vertical scroll into horizontal movement.
 - **Cinematic Case Studies:** A "lifting state" modal architecture that clears the DOM transform trap, allowing for smooth, full-screen project deep-dives.
 - **Brand System:** A cohesive visual language centered around a "Terracotta" (`#B04627`) and "Charcoal" palette.
 - **Adaptive Navigation:** A `mix-blend-difference` Navbar that automatically adjusts its visibility based on the background color it passes over.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework:** React 18 (Vite)
 - **Language:** TypeScript (Strictly Typed)
@@ -33,7 +33,7 @@ This portfolio deviates from standard vertical scrolling to provide a **Horizont
 - **Animation:** Framer Motion (Orchestration & Gestures)
 - **Icons:** Lucide React
 
-## 📥 Installation
+##  Installation
 
 1. **Clone the repository:**
    ```bash
