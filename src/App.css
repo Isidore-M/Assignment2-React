@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* 1. Global Custom Properties */
+:root {
+  --brand-orange: #B04627;
+  --brand-white: #FFFFFF;
+  --text-dark: #1A1A1A;
+  --text-muted: #666666;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Portfolio Counter (UI Architect Version) */
+.counter {
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 9999px; /* Pill shape */
+  color: white;
+  background: black;
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  margin-bottom: 24px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--brand-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(176, 70, 39, 0.2);
+  }
+}
+
+/* 3. Refined Hero Elements (The "Stack") */
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .base {
+    width: 200px;
+    z-index: 10;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* We'll use these for decorative architectural lines */
+  .framework,
+  .vite {
+    position: absolute;
+    opacity: 0.3;
+    pointer-events: none;
+    transition: all 0.8s ease;
+  }
+
+  .framework {
+    z-index: 5;
+    border: 1px solid var(--brand-orange);
+    width: 220px;
+    height: 300px;
+    transform: perspective(1000px) rotateX(15deg) rotateY(-15deg);
+  }
+}
+
+/* 4. Section Spacing & Layout */
+#center {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
+  padding: 0 5vw;
+}
+
+/* 5. Horizontal Divider Lines (The "Architectural Ticks") */
+.ticks {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+
+  /* The little dots/ticks at the ends of lines in your blueprint design */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--brand-orange);
+  }
+
+  &::before { left: 0; }
+  &::after { right: 0; }
+}
+
+/* 6. Social/Nav Links */
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+
+  a {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dark);
+    border: 1px solid var(--border-subtle);
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--brand-orange);
+      color: var(--brand-orange);
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* 1. Global Setup */
+:root {
+  --brand-orange: #B04627;
+  /* We use the brand color as the base for the whole document */
+  background-color: var(--brand-orange);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+    /* This ensures the background color is solid terracotta across the whole app */
+    background-color: var(--brand-orange);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    /* Use a dark charcoal for general text, though Hero handles its own white text */
+    color: #1A1A1A;
+    overflow-x: hidden; 
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--brand-orange);
+  }
+
+  /* Matching the custom selection from your reference */
+  ::selection {
+    background-color: white;
+    color: var(--brand-orange);
+  }
+}
+
+/* 2. Custom Typography for "ARIS THORNE" */
+/* If you don't have a specific font file, 'Impact' or a bold 'Inter' works best */
+@layer utilities {
+  .font-display {
+    font-family: 'Impact', 'Inter', system-ui, sans-serif;
+    font-weight: 900;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', 'ui-monospace', monospace;
+  }
+}
+
+/* 3. Minimalist Scrollbar (Matches the architectural vibe) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-orange);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+
+/* 4. Performance & Rendering Fixes */
+@layer utilities {
+  .gpu-accelerated {
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+  }
+
+  /* This helps the big background text look sharp and subtle */
+  .text-subtle {
+    mix-blend-mode: overlay;
+    opacity: 0.2;
+  }
+}
