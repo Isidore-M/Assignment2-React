@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Alex Thorne // Digital Architecture Portfolio 🏛️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-end, cinematic portfolio experience built for the modern web. This project explores the intersection of **Architectural Design** and **Front-End Engineering**.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/react-%2320232d.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007acc.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=blue)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🏗️ The Architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This portfolio deviates from standard vertical scrolling to provide a **Horizontal Scroll Narrative**. By leveraging `sticky` positioning and CSS transforms, the site glides through four distinct "zones":
 
-## Expanding the ESLint configuration
+1.  **01 / The Hero:** Brand identity and a terracotta-themed cinematic headshot reveal.
+2.  **02 / Philosophy:** A minimalist "About" section focusing on design logic.
+3.  **03 / Selected Works:** An interactive project gallery with full-bleed mask reveals and case study overlays.
+4.  **04 / Connection:** A streamlined contact portal for new collaborations.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Key Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Custom Horizontal Wrapper:** Engineered a bespoke scroll-jack system using React hooks to translate vertical scroll into horizontal movement.
+- **Cinematic Case Studies:** A "lifting state" modal architecture that clears the DOM transform trap, allowing for smooth, full-screen project deep-dives.
+- **Brand System:** A cohesive visual language centered around a "Terracotta" (`#B04627`) and "Charcoal" palette.
+- **Adaptive Navigation:** A `mix-blend-difference` Navbar that automatically adjusts its visibility based on the background color it passes over.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Framework:** React 18 (Vite)
+- **Language:** TypeScript (Strictly Typed)
+- **Styling:** Tailwind CSS (Utility-first architecture)
+- **Animation:** Framer Motion (Orchestration & Gestures)
+- **Icons:** Lucide React
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📥 Installation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/alex-thorne-portfolio.git](https://github.com/your-username/alex-thorne-portfolio.git)
